@@ -1,7 +1,7 @@
-CREATE DATABASE AIRPORT;
+CREATE DATABASE Airport;
 GO
 
-USE AIRPORT;
+USE Airport;
 GO
 
 CREATE TABLE AIRPORT(
@@ -12,8 +12,8 @@ CREATE TABLE AIRPORT(
 );
 GO
 
-CREATE TABLE AIRPLANE_TYP(
-Type_name_AIRPLANE_TYP int PRIMARY KEY,
+CREATE TABLE AIRPLANE_TYPE(
+Type_name_AIRPLANE_TYPE int PRIMARY KEY,
 Company nvarchar(50) not null,
 Max__seat nvarchar not null
 );
@@ -22,21 +22,21 @@ GO
 CREATE TABLE CAN_LAND(
 NumCan_land int PRIMARY KEY,
 AirportCode int not null,
-Type_name_AIRPLANE_TYP int not null,
+Type_name_AIRPLANE_TYPE int not null,
 CONSTRAINT fk_can_land_airport
 FOREIGN KEY (AirportCode) 
 REFERENCES AIRPORT(AirportCode),
-FOREIGN KEY (Type_name_AIRPLANE_TYP) 
-REFERENCES AIRPLANE_TYP(Type_name_AIRPLANE_TYP)
+FOREIGN KEY (Type_name_AIRPLANE_TYPE) 
+REFERENCES AIRPLANE_TYPE(Type_name_AIRPLANE_TYPE)
 );
 GO
 
 CREATE TABLE AIRPLANE(
 AirplaneId int PRIMARY KEY,
 Total_no_of_seat nvarchar(50) not null,
-Type_name_AIRPLANE_TYP int not null,
-FOREIGN KEY (Type_name_AIRPLANE_TYP) 
-REFERENCES AIRPLANE_TYP(Type_name_AIRPLANE_TYP)
+Type_name_AIRPLANE_TYPE int not null,
+FOREIGN KEY (Type_name_AIRPLANE_TYPE) 
+REFERENCES AIRPLANE_TYPE(Type_name_AIRPLANE_TYPE)
 );
 go
 

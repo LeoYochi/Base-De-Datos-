@@ -1,7 +1,7 @@
-CREATE DATABASE RentaVehiculos;
+CREATE DATABASE RentaAutos;
 GO
 
-USE RentaVehiculos;
+USE RentaAutos;
 GO
 
 CREATE TABLE Clients (

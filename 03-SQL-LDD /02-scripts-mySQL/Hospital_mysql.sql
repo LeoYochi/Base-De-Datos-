@@ -1,9 +1,7 @@
 CREATE DATABASE Hospital;
-go
 
-use Hospital;
-go 
-
+USE Hospital;
+ 
 CREATE TABLE Doctor (
 IdDoctor int not null,
 Nombre nvarchar(45) not null,

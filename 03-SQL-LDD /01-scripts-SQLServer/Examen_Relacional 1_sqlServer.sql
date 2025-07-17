@@ -1,10 +1,9 @@
-CREATE DATABASE nombreBDMuchosMuchos;
+CREATE DATABASE ExamenRelacional1;
 GO
 
-USE nombreBDMuchosMuchos;
+USE ExamenRelacional1;
 GO
 
--- Tabla INSTRUCTOR
 CREATE TABLE INSTRUCTOR(
     ssn INT NOT NULL,
     Lname NVARCHAR(50) NOT NULL,
@@ -13,7 +12,6 @@ CREATE TABLE INSTRUCTOR(
 );
 GO
 
--- Tabla CLASS
 CREATE TABLE CLASS(
     coursenum NVARCHAR(50) NOT NULL,
     year NVARCHAR(50) NOT NULL,
@@ -23,7 +21,6 @@ CREATE TABLE CLASS(
 );
 GO
 
--- Tabla TEACHES
 CREATE TABLE TEACHES(
     ssn INT NOT NULL,
     coursenum NVARCHAR(50) NOT NULL,
@@ -40,7 +37,7 @@ CREATE TABLE TEACHES(
 );
 GO
 
-DROP TABLE TEACHES;
+
 
 
 

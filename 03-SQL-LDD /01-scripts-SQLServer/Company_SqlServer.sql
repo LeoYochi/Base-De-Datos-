@@ -1,12 +1,9 @@
--- CREAR BASE DE DATOS "company"
-CREATE DATABASE company;
+CREATE DATABASE Company;
 Go
 
---Utilizar la BD creada
-USE company;
+USE Company;
 Go
 
--- Tabla: EMPLOYEE
 CREATE TABLE Employee (
     SSN INT NOT NULL,
     FirstName NVARCHAR(50),
@@ -20,7 +17,6 @@ CREATE TABLE Employee (
 );
 GO
 
--- Tabla: DEPARTMENT
 CREATE TABLE Department (
     DeptNumber INT NOT NULL,
     Name NVARCHAR(50),
@@ -29,7 +25,6 @@ CREATE TABLE Department (
 );
 GO
 
--- Tabla: PROJECT
 CREATE TABLE Project (
     ProjNumber INT NOT NULL,
     Name NVARCHAR(50),
@@ -38,9 +33,8 @@ CREATE TABLE Project (
 );
 GO
 
--- Tabla: DEPENDENT
 CREATE TABLE Dependent (
-    SSN INT NOT NULL, -- FK a Employee
+    SSN INT NOT NULL, 
     Name NVARCHAR(50) NOT NULL,
     Sex CHAR(1),
     BirthDay DATE,
@@ -52,14 +46,12 @@ CREATE TABLE Dependent (
 );
 GO
 
--- RELACIÓN: SUPERVISION 
 ALTER TABLE Employee
 ADD SupervisorSSN INT,
     CONSTRAINT fk_supervision FOREIGN KEY (SupervisorSSN)
         REFERENCES Employee(SSN);
 GO
 
--- RELACIÓN: MANAGES 
 CREATE TABLE Manages (
     SSN INT NOT NULL,
     DeptNumber INT NOT NULL,
@@ -72,21 +64,18 @@ CREATE TABLE Manages (
 );
 GO
 
--- RELACIÓN: WORKS_FOR
 ALTER TABLE Employee
 ADD DeptNumber INT,
     CONSTRAINT fk_worksfor FOREIGN KEY (DeptNumber)
         REFERENCES Department(DeptNumber);
 GO
 
--- RELACIÓN: CONTROLS
 ALTER TABLE Project
 ADD DeptNumber INT,
     CONSTRAINT fk_controls FOREIGN KEY (DeptNumber)
         REFERENCES Department(DeptNumber);
 GO
 
--- RELACIÓN: WORKS_ON 
 CREATE TABLE WorksOn (
     SSN INT NOT NULL,
     ProjNumber INT NOT NULL,

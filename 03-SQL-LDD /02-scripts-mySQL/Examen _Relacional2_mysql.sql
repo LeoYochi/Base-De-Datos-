@@ -1,14 +1,12 @@
-CREATE DATABASE EmpresaExamen;
-USE EmpresaExamen;
+CREATE DATABASE ExamenRelacional2;
+USE ExamenRelacional2;
 
-# Tabla Categories
 CREATE TABLE Categories (
     CategoryID INT PRIMARY KEY,
     CategoryName VARCHAR(100),
     Description VARCHAR(255)
 );
 
-# Tabla Suppliers
 CREATE TABLE Suppliers (
     SupplierID INT PRIMARY KEY,
     CompanyName VARCHAR(100),
@@ -18,7 +16,6 @@ CREATE TABLE Suppliers (
     HomePage VARCHAR(255)
 );
 
-# Tabla ContactSupplier (N:1 con Suppliers)
 CREATE TABLE ContactSupplier (
     ContactSupplierID INT PRIMARY KEY,
     ContactName VARCHAR(100),
@@ -27,7 +24,6 @@ CREATE TABLE ContactSupplier (
     FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)
 );
 
-# Tabla Products (N:1 con Suppliers, N:1 con Categories)
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
     ProductName VARCHAR(100),
@@ -40,7 +36,6 @@ CREATE TABLE Products (
     FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)
 );
 
-# Tabla Customers
 CREATE TABLE Customers (
     CustomerID INT PRIMARY KEY,
     CompanyName VARCHAR(100),
@@ -49,7 +44,6 @@ CREATE TABLE Customers (
     Region VARCHAR(100)
 );
 
-# Tabla ContactCustomer (1:N con Customers)
 CREATE TABLE ContactCustomer (
     ContactID INT PRIMARY KEY,
     CustomerID INT,
@@ -58,13 +52,11 @@ CREATE TABLE ContactCustomer (
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
-# Tabla Shippers
 CREATE TABLE Shippers (
     ShipperID INT PRIMARY KEY,
     CompanyName VARCHAR(100)
 );
 
-# Tabla PhonesShipper (1:N con Shippers)
 CREATE TABLE PhonesShipper (
     PhoneID INT PRIMARY KEY,
     ShipperID INT,
@@ -72,7 +64,6 @@ CREATE TABLE PhonesShipper (
     FOREIGN KEY (ShipperID) REFERENCES Shippers(ShipperID)
 );
 
-# Tabla Employees (relación recursiva y 1:N con Orders)
 CREATE TABLE Employees (
     EmployeeID INT PRIMARY KEY,
     FirstName VARCHAR(50),
@@ -83,7 +74,6 @@ CREATE TABLE Employees (
     FOREIGN KEY (ReportsTo) REFERENCES Employees(EmployeeID)
 );
 
-# Tabla Orders (N:1 con Customers, Shippers, Employees / 1:N con Details)
 CREATE TABLE Orders (
     OrderID INT PRIMARY KEY,
     OrderDate DATE,
@@ -96,7 +86,6 @@ CREATE TABLE Orders (
     FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
 );
 
-# Tabla Details (1:N desde Products, 1:N desde Orders)
 CREATE TABLE Details (
     OrderID INT,
     ProductID INT,

@@ -1,10 +1,8 @@
-CREATE DATABASE RentaVehiculos;
-GO
+CREATE DATABASE RentaAutos;
 
-USE RentaVehiculos;
-GO
+USE RentaAutos;
 
-CREATE TABLE Clients (
+CREATE TABLE Clientes (
     idCliente int not null,
     Ap_Paterno nvarchar(50) not null,
     Ap_Materno nvarchar(50) not null,
@@ -15,7 +13,7 @@ CREATE TABLE Clients (
     num int not null,
     ciudad nvarchar(20) not null,
 
-    CONSTRAINT pk_Client
+    CONSTRAINT pk_Cliente
     PRIMARY KEY (idCliente)
 );
 
@@ -54,9 +52,9 @@ CREATE TABLE Renta (
     CONSTRAINT pk_Renta
     PRIMARY KEY (idRenta),
 
-    CONSTRAINT fk_Renta_Client
+    CONSTRAINT fk_Renta_Cliente
     FOREIGN KEY (idCliente)
-    REFERENCES Clients(idCliente),
+    REFERENCES Clientes(idCliente),
 
     CONSTRAINT fk_Renta_Vehiculo
     FOREIGN KEY (idVehiculo)
