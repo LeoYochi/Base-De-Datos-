@@ -62,3 +62,4 @@ CREATE TABLE Renta (
     FOREIGN KEY (idVehiculo)
     REFERENCES Vehiculos(NumVehiculo)
 );
+
